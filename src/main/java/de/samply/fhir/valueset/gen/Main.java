@@ -50,7 +50,7 @@ public class Main {
         System.out.println("Writing " + valueSets.size() + " ValueSets to " + outputPath);
         IParser parser = FhirContext.forR4().newJsonParser().setPrettyPrint(true);
         for (ValueSet valueSet : valueSets) {
-            try (PrintWriter out = new PrintWriter(outputPath + "ValueSet-" + valueSet.getName())) {
+            try (PrintWriter out = new PrintWriter(outputPath + valueSet.getName() + ".json")) {
                 out.println(parser.encodeResourceToString(valueSet));
             }
         }
